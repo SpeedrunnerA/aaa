@@ -67,53 +67,82 @@ class Main(Screen):
 class Main2(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
-        label2 = Label(text = inst2, size_hint=(1,0.5),
-                      pos_hint={"y":0.5, "center_x":0.5})
+        lineV = FloatLayout( size_hint=(1,1))
+        line1= BoxLayout(size_hint=(1,0.4), pos_hint={"y":0.7, "center_x":0.5})
+        line2= BoxLayout(size_hint=(0.5,0.05),pos_hint={"y":0.4, "center_x":0.5})
+        line3= BoxLayout(size_hint=(0.5,0.05),pos_hint={"y":0.2, "center_x":0.5})
+        line4= BoxLayout(size_hint=(0.25,0.1),pos_hint={"y":0, "center_x":0.5})
 
-        label3 = Label(text = "Введіть результат", size_hint=(0.2,0.05),
-                      pos_hint={"y":0.17, "x":0.1})
+        label1 = Label(text=inst2)
+        line1.add_widget(label1)
 
-        self.rezalt = TextInput(multiline=False, size_hint=(0.35,0.05),
-                      pos_hint={"y":0.17, "center_x":0.5})
-                      
-        but2 = Button(text = "Почати", size_hint=(0.35,0.15),
-                      pos_hint={"y":0.01, "center_x":0.5})
+        label2 = Label(text="Мілілітрів (1-100)")
+        self.rezalt2 = TextInput(multiline = False)
+        line2.add_widget(label2)
+        line2.add_widget(self.rezalt2)
 
-        lineF = FloatLayout(size_hint=(1,1))
-        lineF.add_widget(label2)
-        lineF.add_widget(label3)
-        lineF.add_widget(self.rezalt)
-        lineF.add_widget(but2)
+        label3 = Label(text="Літрів")
+        self.rezalt3 = TextInput(multiline = False)
+        line3.add_widget(label3)
+        line3.add_widget(self.rezalt3)        
 
-        self.add_widget(lineF)
-        but2.on_press = self.next_win
+        but1 = Button(text="Завершити")
+        line4.add_widget(but1)
 
+        lineV.add_widget(line1)
+        lineV.add_widget(line2)
+        lineV.add_widget(line3)
+        lineV.add_widget(line4)
+
+        self.add_widget(lineV)
+        but1.on_press = self.next_win
     def next_win(self):
-        global p1
-        p1 = int(self.rezalt.text)
+        global p3
+        global p2
+        p2 = int(self.rezalt2.text)
+        p3= int(self.rezalt3.text)
+        p1 = int(self.rezalt2.text)
         self.manager.current = 'main3'
         self.manager.transition.direction = "up"
 
 class Main3(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
-        label4 = Label(text = inst3, size_hint=(1,0.5),
-                      pos_hint={"y":0.5, "center_x":0.5})
+        lineV = FloatLayout( size_hint=(1,1))
+        line1= BoxLayout(size_hint=(1,0.4), pos_hint={"y":0.7, "center_x":0.5})
+        line2= BoxLayout(size_hint=(0.5,0.05),pos_hint={"y":0.4, "center_x":0.5})
+        line3= BoxLayout(size_hint=(0.5,0.05),pos_hint={"y":0.2, "center_x":0.5})
+        line4= BoxLayout(size_hint=(0.25,0.1),pos_hint={"y":0, "center_x":0.5})
 
-                      
-        but2 = Button(text = "Почати", size_hint=(0.35,0.15),
-                      pos_hint={"y":0.01, "center_x":0.5})
+        label1 = Label(text=inst3)
+        line1.add_widget(label1)
 
-        lineF = FloatLayout(size_hint=(1,1))
-        lineF.add_widget(label4)
-  
-        lineF.add_widget(but2)
+        label2 = Label(text="Мілілітрів (1-100)")
+        self.rezalt2 = TextInput(multiline = False)
+        line2.add_widget(label2)
+        line2.add_widget(self.rezalt2)
 
-        self.add_widget(lineF)
+        label3 = Label(text="Літрів")
+        self.rezalt3 = TextInput(multiline = False)
+        line3.add_widget(label3)
+        line3.add_widget(self.rezalt3)        
 
-        but2.on_press = self.next_win
+        but1 = Button(text="Завершити")
+        line4.add_widget(but1)
+
+        lineV.add_widget(line1)
+        lineV.add_widget(line2)
+        lineV.add_widget(line3)
+        lineV.add_widget(line4)
+
+        self.add_widget(lineV)
+        but1.on_press = self.next_win
 
     def next_win(self):
+        global p3
+        global p2
+        p2 = int(self.rezalt2.text)
+        p3= int(self.rezalt3.text)
         self.manager.current = 'main4'
         self.manager.transition.direction = "up"
 
@@ -129,12 +158,12 @@ class Main4(Screen):
         label1 = Label(text=inst4)
         line1.add_widget(label1)
 
-        label2 = Label(text="Результат")
+        label2 = Label(text="Мілілітрів (1-100)")
         self.rezalt2 = TextInput(multiline = False)
         line2.add_widget(label2)
         line2.add_widget(self.rezalt2)
 
-        label3 = Label(text="Результат після відпочинку")
+        label3 = Label(text="Літрів")
         self.rezalt3 = TextInput(multiline = False)
         line3.add_widget(label3)
         line3.add_widget(self.rezalt3)        
